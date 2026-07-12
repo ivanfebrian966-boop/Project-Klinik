@@ -16,11 +16,11 @@
         @foreach($logs as $log)
             @if(empty($log))
                 <br>
-            @elseif(str_starts-with($log, '==='))
+            @elseif(str_starts_with($log, '==='))
                 <div style="color: #66d9ef; font-weight: bold; margin-top: 1rem; margin-bottom: 0.5rem; border-bottom: 1px dashed #3e3d32; padding-bottom: 0.25rem;">{{ $log }}</div>
-            @elseif(str_starts-with($log, '✓'))
+            @elseif(str_starts_with($log, '✓'))
                 <div style="color: var(--status-success);">{{ $log }}</div>
-            @elseif(str_starts-with($log, ' - '))
+            @elseif(str_starts_with($log, ' - '))
                 <div style="padding-left: 1.5rem; color: var(--text-primary);">{{ $log }}</div>
             @else
                 <div style="color: var(--text-muted); font-weight: bold;">{{ $log }}</div>
