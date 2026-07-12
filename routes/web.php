@@ -7,19 +7,85 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\TestDemoController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Pasien\PasienDashboardController;
+use App\Http\Controllers\Dokter\DokterDashboardController;
 
-// Dashboard homepage
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+// -------------------------------------------------------
+// PUBLIC ROUTES (tidak butuh login)
+// -------------------------------------------------------
 
-// Demonstration of original ATS Test.php operations using Laravel models
+// Homepage redirect ke login
+Route::get('/', function () {
+    if (session()->has('user_id')) {
+        $role = session('user_role');
+        return match($role) {
+            'admin'  => redirect()->route('admin.dashboard'),
+            'dokter' => redirect()->route('dokter.dashboard'),
+            'pasien' => redirect()->route('pasien.dashboard'),
+            default  => redirect()->route('login'),
+        };
+    }
+    return redirect()->route('login');
+})->name('home');
+
+// Autentikasi
+Route::get('/login',    [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login',   [LoginController::class, 'login'])->name('login.post');
+Route::post('/logout',  [LoginController::class, 'logout'])->name('logout');
+
+// Registrasi (khusus Pasien)
+Route::get('/register',  [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+
+// Demo Test PBO (publik untuk keperluan penilaian)
 Route::get('test-demo', [TestDemoController::class, 'runDemo'])->name('test.demo');
 
-// CRUD Resources
-Route::resource('pasien', PasienController::class);
-Route::resource('dokter', DokterController::class);
-Route::resource('jadwal', JadwalController::class);
+// -------------------------------------------------------
+// ROUTES YANG BUTUH LOGIN
+// -------------------------------------------------------
+Route::middleware(['auth.klinik'])->group(function () {
 
-// Match parameter binding to controller variable $rekamMedi
-Route::resource('rekam-medis', RekamMedisController::class)->parameters([
-    'rekam-medis' => 'rekamMedi'
-]);
+    // ---- ADMIN ROUTES ----
+    Route::middleware(['role.klinik:admin'])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+        // Admin kelola data pasien (CRUD lengkap)
+        Route::resource('pasien', PasienController::class);
+
+        // Admin kelola data dokter
+        Route::resource('dokter', DokterController::class);
+
+        // Admin kelola jadwal
+        Route::resource('jadwal', JadwalController::class);
+
+        // Admin kelola rekam medis
+        Route::resource('rekam-medis', RekamMedisController::class)->parameters([
+            'rekam-medis' => 'rekamMedi'
+        ]);
+    });
+
+    // ---- DOKTER ROUTES ----
+    Route::middleware(['role.klinik:dokter'])->prefix('dokter')->name('dokter.')->group(function () {
+        Route::get('/dashboard', [DokterDashboardController::class, 'dashboard'])->name('dashboard');
+
+        // Manajemen diagnosa
+        Route::get('/diagnosa',               [DokterDashboardController::class, 'diagnosaIndex'])->name('diagnosa.index');
+        Route::get('/diagnosa/{id}/isi',       [DokterDashboardController::class, 'diagnosaForm'])->name('diagnosa.form');
+        Route::post('/diagnosa/{id}/isi',      [DokterDashboardController::class, 'diagnosaStore'])->name('diagnosa.store');
+
+        // Buat rekam medis baru
+        Route::post('/rekam-medis/buat',       [DokterDashboardController::class, 'buatRekamMedis'])->name('rekam.buat');
+    });
+
+    // ---- PASIEN ROUTES ----
+    Route::middleware(['role.klinik:pasien'])->prefix('pasien')->name('pasien.')->group(function () {
+        Route::get('/dashboard',  [PasienDashboardController::class, 'dashboard'])->name('dashboard');
+
+        // Booking jadwal
+        Route::get('/booking',    [PasienDashboardController::class, 'bookingIndex'])->name('booking.index');
+        Route::post('/booking',   [PasienDashboardController::class, 'bookingProses'])->name('booking.proses');
+    });
+});
