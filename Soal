@@ -1,0 +1,64 @@
+APLIKASI KLINIK
+
+xxxxxxxxxxxxxxxxxxxxxxx
+A. KETENTUAN PENGERJAAN
+xxxxxxxxxxxxxxxxxxxxxxx
+Lama pengerjaan : Maksimal 3 sesi (150 menit)
+Lingkungan pengerjaan : VS Code, PHP, Web Server
+
+Sifat pengerjaan :
+- Open slide / modul praktikum / internet 
+- Terkait pemakaian AI generator : jawaban harus menggunakan bahasa sendiri, AI hanya alat bantu. Jika jawaban terindikasi AI-generated, nilai dikurangi 50%
+- Tidak boleh bekerja sama atau copy-paste dengan mahasiswa lain. Jika hasil ATS Anda mempunyai kemiripan > 80% dengan mahasiswa lain, nilai dikurangi 50%
+- Mahasiswa wajib mengerjakan soal yang muncul di akun e-learning masing-masing. Soal bersifat acak. Jika jawaban tidak sesuai dengan soal, otomatis bernilai 0
+- Jika ada soal kurang jelas, tanyakan ke dosen pengawas
+
+xxxxxxxxxxxxxx
+B. PENGUMPULAN
+xxxxxxxxxxxxxx
+1. Folder ATS_XYZ berisi:
+   - Source code PHP
+2. Dicompress (zip), kemudian dikumpulkan melalui e-learning
+
+xxxxxxxxxxxxxx
+C. DAFTAR SOAL
+xxxxxxxxxxxxxx
+1. Implementasi class dan interface yang ada di bagian E untuk mengimplementasikan proses bisnis klinik (40 poin)
+   Silakan menambahkan class lain atau property/method lain ke class yang tersedia di bagian E, jika dibutuhkan
+2. Penambahan abstract class dan subclass. Buatlah source codenya (20 poin)
+3. Overriding method : tulis komentar di source code di bagian yang menunjukkan overriding method  (5 poin)
+4. Polymorphisme : tulis komentar di source code di bagian yang menunjukkan polymorphisme (10 poin)
+5. File Test.php (20 poin)
+   a. Instansiasi semua class 
+   b. Panggil method-method dari objek yang dibuat di langkah (a) yang mencerminkan proses bisnis klinik
+   c. Berikan komentar di source code untuk memperjelas jawaban (b)
+6. Capture output dan beri penjelasan (5 poin)
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+D. DESKRIPSI APLIKASI KLINIK
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+1. Admin/dokter dapat login
+2. Admin dapat mengelola data pasien
+3. Pasien dapat registrasi dan login
+4. Pasien dapat booking jadwal dengan memilih dokter dan tanggal
+5. Dokter dapat mengisi diagnosa dan resep sederhana
+
+xxxxxxxxxxxxxxxx
+E.STRUKTUR CLASS
+xxxxxxxxxxxxxxxx
+Interface JadwalChecker
+Method : isJadwalTersedia(tanggal: Date, jam: String): boolean
+
+Class : Jadwal
+Property : idJadwal, tanggal, jam, status
+Method : isJadwalTersedia, updateStatus
+
+Class : RekamMedis
+Property : idRekamMedis, tanggal, keluhan, diagnosa: string
+Method : simpanRekamMedis, lihatRekamMedis
+
+Class : Pasien
+Property : noRM, alamat
+Method : bookingJadwal
+
+File utama: Test.php
