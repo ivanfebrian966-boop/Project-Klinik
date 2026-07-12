@@ -8,7 +8,7 @@
 <div class="glass-card">
     <div class="card-title">
         <span>Daftar Jadwal Klinik</span>
-        <a href="{{ route('jadwal.create') }}" class="btn btn-primary btn-sm">📅 Tambah Jadwal Baru</a>
+        <a href="{{ route('admin.jadwal.create') }}" class="btn btn-primary btn-sm">📅 Tambah Jadwal Baru</a>
     </div>
 
     <div class="table-container">
@@ -48,8 +48,8 @@
                         </td>
                         <td>
                             <div class="action-buttons">
-                                <a href="{{ route('jadwal.edit', $jadwal->id) }}" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; border-color: var(--accent-primary); color: var(--accent-primary);">✏️ Edit</a>
-                                <form action="{{ route('jadwal.destroy', $jadwal->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus jadwal ini?')" style="display:inline;">
+                                <a href="{{ route('admin.jadwal.edit', $jadwal->id) }}" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; border-color: var(--accent-primary); color: var(--accent-primary);">✏️ Edit</a>
+                                <form action="{{ route('admin.jadwal.destroy', $jadwal->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus jadwal ini?')" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" style="padding: 0.25rem 0.5rem;">🗑️ Hapus</button>

@@ -8,10 +8,10 @@
 <div class="glass-card">
     <div class="card-title">
         <span>Form Pembuatan Jadwal</span>
-        <a href="{{ route('jadwal.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali ke Daftar</a>
+        <a href="{{ route('admin.jadwal.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali ke Daftar</a>
     </div>
 
-    <form action="{{ route('jadwal.store') }}" method="POST">
+    <form action="{{ route('admin.jadwal.store') }}" method="POST">
         @csrf
         <div class="form-grid">
             <div class="form-group">
@@ -71,7 +71,7 @@
 
         <div class="btn-container">
             <button type="submit" class="btn btn-primary">💾 Simpan Jadwal</button>
-            <a href="{{ route('jadwal.index') }}" class="btn btn-secondary">Batal</a>
+            <a href="{{ route('admin.jadwal.index') }}" class="btn btn-secondary">Batal</a>
         </div>
     </form>
 </div>

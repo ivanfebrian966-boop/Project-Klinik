@@ -8,10 +8,10 @@
 <div class="glass-card">
     <div class="card-title">
         <span>Form Edit Dokter: {{ $dokter->nama }}</span>
-        <a href="{{ route('dokter.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali ke Daftar</a>
+        <a href="{{ route('admin.dokter.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali ke Daftar</a>
     </div>
 
-    <form action="{{ route('dokter.update', $dokter->id) }}" method="POST">
+    <form action="{{ route('admin.dokter.update', $dokter->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-grid">
@@ -50,7 +50,7 @@
 
         <div class="btn-container">
             <button type="submit" class="btn btn-primary">💾 Simpan Perubahan</button>
-            <a href="{{ route('dokter.index') }}" class="btn btn-secondary">Batal</a>
+            <a href="{{ route('admin.dokter.index') }}" class="btn btn-secondary">Batal</a>
         </div>
     </form>
 </div>

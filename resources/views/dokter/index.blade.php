@@ -8,7 +8,7 @@
 <div class="glass-card">
     <div class="card-title">
         <span>Daftar Dokter Terdaftar</span>
-        <a href="{{ route('dokter.create') }}" class="btn btn-primary btn-sm">➕ Tambah Dokter Baru</a>
+        <a href="{{ route('admin.dokter.create') }}" class="btn btn-primary btn-sm">➕ Tambah Dokter Baru</a>
     </div>
 
     <div class="table-container">
@@ -29,9 +29,9 @@
                         <td><span class="badge status-dipesan" style="background-color: hsla(270, 89%, 65%, 0.15); color: var(--accent-purple);">{{ $dokter->spesialis }}</span></td>
                         <td>
                             <div class="action-buttons">
-                                <a href="{{ route('dokter.show', $dokter->id) }}" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem;">👁️ Detail</a>
-                                <a href="{{ route('dokter.edit', $dokter->id) }}" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; border-color: var(--accent-primary); color: var(--accent-primary);">✏️ Edit</a>
-                                <form action="{{ route('dokter.destroy', $dokter->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data dokter ini?')" style="display:inline;">
+                                <a href="{{ route('admin.dokter.show', $dokter->id) }}" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem;">👁️ Detail</a>
+                                <a href="{{ route('admin.dokter.edit', $dokter->id) }}" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; border-color: var(--accent-primary); color: var(--accent-primary);">✏️ Edit</a>
+                                <form action="{{ route('admin.dokter.destroy', $dokter->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data dokter ini?')" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" style="padding: 0.25rem 0.5rem;">🗑️ Hapus</button>

@@ -9,7 +9,7 @@ class PasienController extends Controller
 {
     public function index()
     {
-        $pasiens = Pasien::all();
+        $pasiens = Pasien::orderBy('nama')->get();
         return view('pasien.index', compact('pasiens'));
     }
 
@@ -20,21 +20,23 @@ class PasienController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'email' => 'required|email|unique:pasiens,email',
+        $request->validate([
+            'nama'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:pasiens,email',
             'password' => 'required|string|min:4',
-            'no_rm' => 'required|string|unique:pasiens,no_rm',
-            'alamat' => 'required|string',
+            'no_rm'    => 'required|string|unique:pasiens,no_rm',
+            'alamat'   => 'required|string',
         ]);
 
-        Pasien::create($validated);
+        Pasien::create($request->only(['nama', 'email', 'password', 'no_rm', 'alamat']));
 
-        return redirect()->route('pasien.index')->with('success', 'Data Pasien berhasil ditambahkan!');
+        return redirect()->route('admin.pasien.index')
+            ->with('success', 'Data Pasien berhasil ditambahkan!');
     }
 
     public function show(Pasien $pasien)
     {
+        $pasien->load(['jadwals.dokter', 'rekamMedis.dokter']);
         return view('pasien.show', compact('pasien'));
     }
 
@@ -45,25 +47,29 @@ class PasienController extends Controller
 
     public function update(Request $request, Pasien $pasien)
     {
-        $validated = $request->validate([
-            'nama' => 'required|string|max:255',
-            'email' => 'required|email|unique:pasiens,email,' . $pasien->id,
-            'no_rm' => 'required|string|unique:pasiens,no_rm,' . $pasien->id,
+        $request->validate([
+            'nama'   => 'required|string|max:255',
+            'email'  => 'required|email|unique:pasiens,email,' . $pasien->id,
+            'no_rm'  => 'required|string|unique:pasiens,no_rm,' . $pasien->id,
             'alamat' => 'required|string',
         ]);
 
+        $data = $request->only(['nama', 'email', 'no_rm', 'alamat']);
+
         if ($request->filled('password')) {
-            $validated['password'] = $request->password;
+            $data['password'] = $request->password;
         }
 
-        $pasien->update($validated);
+        $pasien->update($data);
 
-        return redirect()->route('pasien.index')->with('success', 'Data Pasien berhasil diupdate!');
+        return redirect()->route('admin.pasien.index')
+            ->with('success', 'Data Pasien berhasil diupdate!');
     }
 
     public function destroy(Pasien $pasien)
     {
         $pasien->delete();
-        return redirect()->route('pasien.index')->with('success', 'Data Pasien berhasil dihapus!');
+        return redirect()->route('admin.pasien.index')
+            ->with('success', 'Data Pasien berhasil dihapus!');
     }
 }

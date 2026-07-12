@@ -8,10 +8,10 @@
 <div class="glass-card">
     <div class="card-title">
         <span>Form Tambah Dokter</span>
-        <a href="{{ route('dokter.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali ke Daftar</a>
+        <a href="{{ route('admin.dokter.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali ke Daftar</a>
     </div>
 
-    <form action="{{ route('dokter.store') }}" method="POST">
+    <form action="{{ route('admin.dokter.store') }}" method="POST">
         @csrf
         <div class="form-grid">
             <div class="form-group">
@@ -49,7 +49,7 @@
 
         <div class="btn-container">
             <button type="submit" class="btn btn-primary">💾 Simpan Data Dokter</button>
-            <a href="{{ route('dokter.index') }}" class="btn btn-secondary">Batal</a>
+            <a href="{{ route('admin.dokter.index') }}" class="btn btn-secondary">Batal</a>
         </div>
     </form>
 </div>

@@ -46,7 +46,7 @@
     <div class="glass-card">
         <div class="card-title">
             <span>Recent Pasien</span>
-            <a href="{{ route('pasien.index') }}" class="btn btn-secondary btn-sm">Lihat Semua</a>
+            <a href="{{ route('admin.pasien.index') }}" class="btn btn-secondary btn-sm">Lihat Semua</a>
         </div>
         <div class="table-container">
             <table class="custom-table">
@@ -78,7 +78,7 @@
     <div class="glass-card">
         <div class="card-title">
             <span>Rekam Medis Terkini</span>
-            <a href="{{ route('rekam-medis.index') }}" class="btn btn-secondary btn-sm">Lihat Semua</a>
+            <a href="{{ route('admin.rekam-medis.index') }}" class="btn btn-secondary btn-sm">Lihat Semua</a>
         </div>
         <div class="table-container">
             <table class="custom-table">

@@ -31,8 +31,8 @@
                 <div><span class="badge status-dipesan">{{ $pasien->getRole() }}</span></div>
             </div>
             <div class="btn-container" style="margin-top: 2rem;">
-                <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-primary btn-sm" style="flex: 1;">✏️ Edit Profil</a>
-                <a href="{{ route('pasien.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali</a>
+                <a href="{{ route('admin.pasien.edit', $pasien->id) }}" class="btn btn-primary btn-sm" style="flex: 1;">✏️ Edit Profil</a>
+                <a href="{{ route('admin.pasien.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali</a>
             </div>
         </div>
     </div>

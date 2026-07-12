@@ -8,7 +8,7 @@
 <div class="glass-card">
     <div class="card-title">
         <span>Daftar Rekam Medis</span>
-        <a href="{{ route('rekam-medis.create') }}" class="btn btn-primary btn-sm">📋 Tambah Rekam Medis Baru</a>
+        <a href="{{ route('admin.rekam-medis.create') }}" class="btn btn-primary btn-sm">📋 Tambah Rekam Medis Baru</a>
     </div>
 
     <div class="table-container">
@@ -43,8 +43,8 @@
                         <td>{{ $rm->resep ?? '-' }}</td>
                         <td>
                             <div class="action-buttons">
-                                <a href="{{ route('rekam-medis.edit', $rm->id) }}" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; border-color: var(--accent-primary); color: var(--accent-primary);">✏️ Edit / Diagnosa</a>
-                                <form action="{{ route('rekam-medis.destroy', $rm->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data rekam medis ini?')" style="display:inline;">
+                                <a href="{{ route('admin.rekam-medis.edit', $rm->id) }}" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; border-color: var(--accent-primary); color: var(--accent-primary);">✏️ Edit / Diagnosa</a>
+                                <form action="{{ route('admin.rekam-medis.destroy', $rm->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data rekam medis ini?')" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" style="padding: 0.25rem 0.5rem;">🗑️ Hapus</button>

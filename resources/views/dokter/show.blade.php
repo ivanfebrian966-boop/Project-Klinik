@@ -27,8 +27,8 @@
                 <div><span class="badge status-tersedia" style="background-color: hsla(270, 89%, 65%, 0.15); color: var(--accent-purple);">{{ $dokter->getRole() }}</span></div>
             </div>
             <div class="btn-container" style="margin-top: 2rem;">
-                <a href="{{ route('dokter.edit', $dokter->id) }}" class="btn btn-primary btn-sm" style="flex: 1;">✏️ Edit Profil</a>
-                <a href="{{ route('dokter.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali</a>
+                <a href="{{ route('admin.dokter.edit', $dokter->id) }}" class="btn btn-primary btn-sm" style="flex: 1;">✏️ Edit Profil</a>
+                <a href="{{ route('admin.dokter.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali</a>
             </div>
         </div>
     </div>

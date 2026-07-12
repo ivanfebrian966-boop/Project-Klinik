@@ -8,10 +8,10 @@
 <div class="glass-card">
     <div class="card-title">
         <span>Form Pemeriksaan & Diagnosa Rekam Medis #{{ $rekamMedis->id }}</span>
-        <a href="{{ route('rekam-medis.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali ke Daftar</a>
+        <a href="{{ route('admin.rekam-medis.index') }}" class="btn btn-secondary btn-sm">⬅️ Kembali ke Daftar</a>
     </div>
 
-    <form action="{{ route('rekam-medis.update', $rekamMedis->id) }}" method="POST">
+    <form action="{{ route('admin.rekam-medis.update', $rekamMedis->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-grid">
@@ -74,7 +74,7 @@
 
         <div class="btn-container">
             <button type="submit" class="btn btn-primary">💾 Simpan Diagnosa & Resep</button>
-            <a href="{{ route('rekam-medis.index') }}" class="btn btn-secondary">Batal</a>
+            <a href="{{ route('admin.rekam-medis.index') }}" class="btn btn-secondary">Batal</a>
         </div>
     </form>
 </div>

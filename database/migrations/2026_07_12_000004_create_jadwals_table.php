@@ -11,10 +11,10 @@ return new class extends Migration
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal');
-            $table->string('jam');
-            $table->string('status')->default('tersedia'); // 'tersedia', 'dipesan', 'selesai'
-            $table->foreignId('dokter_id')->nullable()->constrained('dokters')->onDelete('set null');
-            $table->foreignId('pasien_id')->nullable()->constrained('pasiens')->onDelete('set null');
+            $table->time('jam');
+            $table->string('status')->default('tersedia');
+            $table->foreignId('dokter_id')->nullable()->constrained('dokters')->nullOnDelete();
+            $table->foreignId('pasien_id')->nullable()->constrained('pasiens')->nullOnDelete();
             $table->timestamps();
         });
     }

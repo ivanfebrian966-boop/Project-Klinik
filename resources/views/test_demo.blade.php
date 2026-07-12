@@ -8,7 +8,7 @@
 <div class="glass-card">
     <div class="card-title">
         <span>Log Output Eksekusi Program (PBO / OOP)</span>
-        <a href="{{ route('dashboard') }}" class="btn btn-secondary btn-sm">⬅️ Kembali ke Dashboard</a>
+        <a href="{{ route('home') }}" class="btn btn-secondary btn-sm">⬅️ Kembali</a>
     </div>
 
     <!-- Terminal styled output container -->
