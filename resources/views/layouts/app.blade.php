@@ -77,10 +77,6 @@
 
                     @endswitch
 
-                    {{-- Link Demo PBO (untuk semua role) --}}
-                    <li class="nav-item {{ Route::is('test.demo') ? 'active' : '' }}">
-                        <a href="{{ route('test.demo') }}"><span>⚡</span> Demo Test PBO</a>
-                    </li>
                 </ul>
             </nav>
 

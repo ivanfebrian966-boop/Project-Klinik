@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class RekamMedis extends Model
 {
     protected $table = 'rekam_medis';
-    protected $guarded = [];
+    protected $fillable = ['tanggal', 'keluhan', 'diagnosa', 'resep', 'pasien_id', 'dokter_id'];
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
 
     // Relationship to Patient
     public function pasien()

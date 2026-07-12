@@ -1,12 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\RekamMedisController;
-use App\Http\Controllers\TestDemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -39,9 +37,6 @@ Route::post('/logout',  [LoginController::class, 'logout'])->name('logout');
 // Registrasi (khusus Pasien)
 Route::get('/register',  [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
-
-// Demo Test PBO (publik untuk keperluan penilaian)
-Route::get('test-demo', [TestDemoController::class, 'runDemo'])->name('test.demo');
 
 // -------------------------------------------------------
 // ROUTES YANG BUTUH LOGIN

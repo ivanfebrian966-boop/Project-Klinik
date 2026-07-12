@@ -2,7 +2,6 @@
 
 @section('title', 'Dashboard Dokter')
 @section('page_title', 'Dashboard Dokter')
-@section('page_subtitle', 'Selamat datang, {{ session("user_nama") }} — Spesialis: {{ $dokter->spesialis }}')
 
 @section('content')
 <!-- Stats Grid -->

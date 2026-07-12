@@ -12,10 +12,14 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal');
             $table->time('jam');
-            $table->string('status')->default('tersedia');
+            $table->enum('status', ['tersedia', 'dipesan', 'selesai'])->default('tersedia');
+            $table->timestamp('tanggal_booking')->nullable();
             $table->foreignId('dokter_id')->nullable()->constrained('dokters')->nullOnDelete();
             $table->foreignId('pasien_id')->nullable()->constrained('pasiens')->nullOnDelete();
             $table->timestamps();
+
+            $table->index(['tanggal', 'status']);
+            $table->index(['dokter_id', 'pasien_id']);
         });
     }
 

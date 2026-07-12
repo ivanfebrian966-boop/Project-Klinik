@@ -5,6 +5,8 @@ namespace App\Models;
 class Pasien extends Person
 {
     protected $table = 'pasiens';
+    protected $fillable = ['nama', 'email', 'password', 'no_rm', 'alamat'];
+    protected $hidden = ['password'];
 
     // Override getRole
     public function getRole()
@@ -30,6 +32,7 @@ class Pasien extends Person
         if ($jadwal instanceof Jadwal && $jadwal->isJadwalTersedia($jadwal->tanggal, $jadwal->jam)) {
             $jadwal->updateStatus('dipesan');
             $jadwal->pasien_id = $this->id;
+            $jadwal->tanggal_booking = now();
             $jadwal->save();
             return "Booking berhasil untuk tanggal " . $jadwal->tanggal . " jam " . $jadwal->jam;
         }

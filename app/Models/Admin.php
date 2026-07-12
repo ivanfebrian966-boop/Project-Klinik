@@ -5,6 +5,8 @@ namespace App\Models;
 class Admin extends Person
 {
     protected $table = 'admins';
+    protected $fillable = ['nama', 'email', 'password', 'level_akses'];
+    protected $hidden = ['password'];
 
     // Override getRole
     public function getRole()

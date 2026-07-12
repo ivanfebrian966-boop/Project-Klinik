@@ -5,6 +5,8 @@ namespace App\Models;
 class Dokter extends Person
 {
     protected $table = 'dokters';
+    protected $fillable = ['nama', 'email', 'password', 'spesialis'];
+    protected $hidden = ['password'];
 
     // Override getRole
     public function getRole()

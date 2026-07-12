@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Jadwal extends Model implements JadwalChecker
 {
     protected $table = 'jadwals';
-    protected $guarded = [];
+    protected $fillable = ['tanggal', 'jam', 'status', 'tanggal_booking', 'dokter_id', 'pasien_id'];
+    protected $casts = [
+        'tanggal' => 'date',
+        'tanggal_booking' => 'datetime',
+    ];
 
     // Relationship to Doctor
     public function dokter()
