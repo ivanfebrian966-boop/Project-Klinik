@@ -27,5 +27,31 @@ class RekamMedisSeeder extends Seeder
             'diagnosa' => 'Demam berdarah ringan',
             'resep' => 'Paracetamol 3x1, Multivitamin 1x1',
         ]);
+
+        $pasienRina = Pasien::where('email', 'rina@email.com')->first();
+        if ($pasienRina) {
+            RekamMedis::updateOrCreate([
+                'pasien_id' => $pasienRina->id,
+                'dokter_id' => $dokter->id,
+                'tanggal' => '2024-12-22',
+            ], [
+                'keluhan' => 'Sakit kepala berkepanjangan dan mual',
+                'diagnosa' => 'Migrain ringan',
+                'resep' => 'Ibuprofen 2x1, Istirahat cukup',
+            ]);
+        }
+
+        $pasienRio = Pasien::where('email', 'rio@email.com')->first();
+        if ($pasienRio) {
+            RekamMedis::updateOrCreate([
+                'pasien_id' => $pasienRio->id,
+                'dokter_id' => $dokter->id,
+                'tanggal' => '2024-12-23',
+            ], [
+                'keluhan' => 'Gusi berdarah saat sikat gigi',
+                'diagnosa' => null,
+                'resep' => null,
+            ]);
+        }
     }
 }

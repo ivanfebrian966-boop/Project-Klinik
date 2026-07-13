@@ -24,5 +24,13 @@ class DokterSeeder extends Seeder
             'password' => 'dokter123',
             'spesialis' => 'Anak',
         ]);
+
+        Dokter::updateOrCreate([
+            'email' => 'dr.intan@klinik.com',
+        ], [
+            'nama' => 'Dr. Intan Wulan',
+            'password' => 'dokter123',
+            'spesialis' => 'Gigi',
+        ]);
     }
 }

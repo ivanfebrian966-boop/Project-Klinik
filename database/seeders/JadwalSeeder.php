@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Dokter;
 use App\Models\Jadwal;
+use App\Models\Pasien;
 use Illuminate\Database\Seeder;
 
 class JadwalSeeder extends Seeder
@@ -47,6 +48,8 @@ class JadwalSeeder extends Seeder
             ],
             [
                 'status' => 'dipesan',
+                'pasien_id' => Pasien::where('email', 'ahmad@email.com')->first()->id ?? null,
+                'tanggal_booking' => now(),
             ]
         );
 
@@ -55,6 +58,30 @@ class JadwalSeeder extends Seeder
                 'tanggal' => '2024-12-22',
                 'jam' => '11:00',
                 'dokter_id' => $dokter2->id,
+            ],
+            [
+                'status' => 'tersedia',
+            ]
+        );
+
+        Jadwal::updateOrCreate(
+            [
+                'tanggal' => '2024-12-23',
+                'jam' => '09:30',
+                'dokter_id' => $dokter2->id,
+            ],
+            [
+                'status' => 'dipesan',
+                'pasien_id' => Pasien::where('email', 'rina@email.com')->first()->id ?? null,
+                'tanggal_booking' => now(),
+            ]
+        );
+
+        Jadwal::updateOrCreate(
+            [
+                'tanggal' => '2024-12-24',
+                'jam' => '15:00',
+                'dokter_id' => $dokter1->id,
             ],
             [
                 'status' => 'tersedia',
