@@ -2,7 +2,6 @@
 
 @section('title', 'Dashboard Admin')
 @section('page_title', 'Dashboard Admin')
-@section('page_subtitle', 'Selamat datang, {{ session("user_nama") }} — Kelola seluruh data klinik dari sini')
 
 @section('content')
 <!-- Stats Grid -->
