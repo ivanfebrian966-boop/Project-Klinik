@@ -11,9 +11,6 @@ use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\Dokter\DokterDashboardController;
 use App\Http\Controllers\Pasien\PasienDashboardController;
 
-// -------------------------------------------------------
-// PUBLIC ROUTES (tidak butuh login)
-// -------------------------------------------------------
 
 // Homepage redirect ke login atau ke dashboard sesuai role
 Route::get('/', function () {
