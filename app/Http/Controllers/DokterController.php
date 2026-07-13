@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DokterController extends Controller
 {
@@ -55,7 +56,7 @@ class DokterController extends Controller
         $data = $request->only(['nama', 'email', 'spesialis']);
 
         if ($request->filled('password')) {
-            $data['password'] = $request->password;
+            $data['password'] = Hash::make($request->password);
         }
 
         $dokter->update($data);

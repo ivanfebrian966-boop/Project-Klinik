@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Pasien;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class PasienSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class PasienSeeder extends Seeder
             'email' => 'ahmad@email.com',
         ], [
             'nama' => 'Ahmad',
-            'password' => 'pass123',
+            'password' => Hash::make('pass123'),
             'no_rm' => 'RM001',
             'alamat' => 'Jl. Merdeka No. 10',
         ]);
@@ -22,7 +23,7 @@ class PasienSeeder extends Seeder
             'email' => 'rina@email.com',
         ], [
             'nama' => 'Rina',
-            'password' => 'pass123',
+            'password' => Hash::make('pass123'),
             'no_rm' => 'RM002',
             'alamat' => 'Jl. Melati No. 20',
         ]);
@@ -31,7 +32,7 @@ class PasienSeeder extends Seeder
             'email' => 'siti@email.com',
         ], [
             'nama' => 'Siti',
-            'password' => 'pass123',
+            'password' => Hash::make('pass123'),
             'no_rm' => 'RM003',
             'alamat' => 'Jl. Kenanga No. 5',
         ]);
@@ -40,7 +41,7 @@ class PasienSeeder extends Seeder
             'email' => 'rio@email.com',
         ], [
             'nama' => 'Rio',
-            'password' => 'pass123',
+            'password' => Hash::make('pass123'),
             'no_rm' => 'RM004',
             'alamat' => 'Jl. Anggrek No. 8',
         ]);

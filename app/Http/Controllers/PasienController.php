@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PasienController extends Controller
 {
@@ -57,7 +58,7 @@ class PasienController extends Controller
         $data = $request->only(['nama', 'email', 'no_rm', 'alamat']);
 
         if ($request->filled('password')) {
-            $data['password'] = $request->password;
+            $data['password'] = Hash::make($request->password);
         }
 
         $pasien->update($data);

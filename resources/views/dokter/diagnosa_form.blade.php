@@ -82,13 +82,6 @@
             </div>
         </form>
 
-        <div style="margin-top:1.5rem;padding:1rem;background:var(--bg-secondary);border-radius:10px;font-size:0.85rem;color:var(--text-muted);border-left:3px solid var(--accent-primary);">
-            <strong style="color:var(--accent-primary);">Catatan OOP:</strong>
-            Saat Anda menekan tombol Simpan, sistem akan memanggil method
-            <code style="color:var(--accent-secondary);">$dokter->isiDiagnosa($rekamMedis, $diagnosa, $resep)</code>
-            dari class <code>Dokter</code> (override dari abstract class <code>Person</code>),
-            yang kemudian memanggil <code>$rekamMedis->simpanRekamMedis()</code> untuk menyimpan ke MySQL.
-        </div>
     </div>
 </div>
 @endsection

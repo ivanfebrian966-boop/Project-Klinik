@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -36,7 +37,7 @@ class RegisterController extends Controller
         $pasien = Pasien::create([
             'nama'     => $request->nama,
             'email'    => $request->email,
-            'password' => $request->password,  // Disimpan plain text sesuai ATS original
+            'password' => Hash::make($request->password),
             'no_rm'    => $request->no_rm,
             'alamat'   => $request->alamat,
         ]);

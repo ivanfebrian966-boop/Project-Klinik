@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Dokter;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DokterSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class DokterSeeder extends Seeder
             'email' => 'dr.muhammad@klinik.com',
         ], [
             'nama' => 'Dr. Muhammad Ivan Febrian',
-            'password' => 'dokter123',
+            'password' => Hash::make('dokter123'),
             'spesialis' => 'Umum',
         ]);
 
@@ -21,7 +22,7 @@ class DokterSeeder extends Seeder
             'email' => 'dr.siti@klinik.com',
         ], [
             'nama' => 'Dr. Siti Aisyah',
-            'password' => 'dokter123',
+            'password' => Hash::make('dokter123'),
             'spesialis' => 'Anak',
         ]);
 
@@ -29,7 +30,7 @@ class DokterSeeder extends Seeder
             'email' => 'dr.intan@klinik.com',
         ], [
             'nama' => 'Dr. Intan Wulan',
-            'password' => 'dokter123',
+            'password' => Hash::make('dokter123'),
             'spesialis' => 'Gigi',
         ]);
     }

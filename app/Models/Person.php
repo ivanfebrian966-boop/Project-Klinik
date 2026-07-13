@@ -4,10 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 abstract class Person extends Model
 {
     protected $guarded = [];
+
+    // Automatically hash password values when saving to database
+    public function setPasswordAttribute($value)
+    {
+        if (!$value) {
+            return;
+        }
+
+        if (!Str::startsWith($value, ['$2y$', '$argon2id$', '$argon2i$'])) {
+            $value = Hash::make($value);
+        }
+
+        $this->attributes['password'] = $value;
+    }
 
     // Abstract method - must be implemented by subclasses
     abstract public function getRole();
