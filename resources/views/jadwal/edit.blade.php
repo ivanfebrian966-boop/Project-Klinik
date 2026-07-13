@@ -50,7 +50,7 @@
 
             <div class="form-group">
                 <label for="jam">Jam Praktek</label>
-                <input type="text" name="jam" id="jam" class="form-control" value="{{ old('jam', $jadwal->jam) }}" required>
+                <input type="time" name="jam" id="jam" class="form-control" value="{{ old('jam', $jadwal->jam) }}" required>
                 @error('jam')
                     <span class="error-message">{{ $message }}</span>
                 @enderror

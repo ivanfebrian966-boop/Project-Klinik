@@ -15,9 +15,22 @@ abstract class Person extends Model
     // Override or implement login method matching the original ATS
     public function login($email, $password)
     {
-        if ($this->email === $email && ($this->password === $password || Hash::check($password, $this->password))) {
+        $isValidPassword = false;
+
+        if ($this->password === $password) {
+            $isValidPassword = true;
+        } else {
+            try {
+                $isValidPassword = Hash::check($password, $this->password);
+            } catch (\Exception $e) {
+                $isValidPassword = false;
+            }
+        }
+
+        if ($this->email === $email && $isValidPassword) {
             return "Login berhasil sebagai " . $this->getRole() . ": " . $this->nama;
         }
+
         return "Login gagal! Email atau password salah.";
     }
 

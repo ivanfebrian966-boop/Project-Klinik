@@ -26,7 +26,7 @@ class JadwalController extends Controller
     {
         $request->validate([
             'tanggal'   => 'required|date',
-            'jam'       => 'required|string',
+            'jam'       => 'required|date_format:H:i',
             'status'    => 'required|in:tersedia,dipesan,selesai',
             'dokter_id' => 'required|exists:dokters,id',
             'pasien_id' => 'nullable|exists:pasiens,id',
@@ -56,7 +56,7 @@ class JadwalController extends Controller
     {
         $request->validate([
             'tanggal'   => 'required|date',
-            'jam'       => 'required|string',
+            'jam'       => 'required|date_format:H:i',
             'status'    => 'required|in:tersedia,dipesan,selesai',
             'dokter_id' => 'required|exists:dokters,id',
             'pasien_id' => 'nullable|exists:pasiens,id',

@@ -2,7 +2,6 @@
 
 @section('title', 'Dashboard Pasien')
 @section('page_title', 'Dashboard Saya')
-@section('page_subtitle', 'Halo, {{ session("user_nama") }}! Berikut informasi jadwal dan rekam medis Anda')
 
 @section('content')
 <!-- Patient Info Card -->
